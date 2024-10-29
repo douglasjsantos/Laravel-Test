@@ -23,13 +23,12 @@ Route::get('/sobre-nos', 'SobreNosController@sobreNos');
 
 Route::get('/contato', 'ContatoController@contato');
 
-// nome, categoria, assunto e mensagem
+Route::get('/login', function() {return "Login";});
 
-Route::get('/contato/{nome?}/{categoria_id?}',
-    function(
-        string $nome = "Desconhecido",
-        int $categoria_id = 1
-    ){
-        echo "Estamos aqui: $nome - $categoria_id";
-})->where('categoria_id', '[0-9]+')
-->where('nome', '[A-Za-z]+');
+
+Route::prefix("/app") -> group(function() {
+    Route::get('/clientes', function(){return "Clientes";});
+    Route::get('/produtos', function(){return "Produtos";});
+    Route::get('/fornecedores', function(){return "Fornecedores";});
+});
+
