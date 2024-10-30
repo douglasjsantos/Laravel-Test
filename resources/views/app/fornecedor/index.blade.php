@@ -1,9 +1,15 @@
-<h3>Fornecedor </h3>
-
-{{-- Comentário que será descartado pelo blade e não aparecerá no HTML da página --}}
+<h3>Fornecedores</h3>
 
 
-@php
-    $nome = 'Douglas'
-@endphp
+{{-- @dd($fornecedores) --}}
+{{-- @dd($fornecedores) --}}
+Fornecedor: {{$fornecedores[0]['nome']}}
+<br>
+Status: {{$fornecedores[0]['status']}}
+<br>
 
+@if ( !($fornecedores[0]['status'] == 'N'))
+    <h1>Fornecedor inativo</h1>
+@else
+    <h1>Fornecedor ativo</h1>
+@endif
